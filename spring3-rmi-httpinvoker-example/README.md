@@ -15,5 +15,5 @@ server
 
 client
 
-* [httpClientApplicationContext.xml](src/main/resources/httpClientApplicationContext.xml)
+* [HttpClientApplicationContext.xml](src/main/resources/HttpClientApplicationContext.xml)
 * [HttpUserServiceClient.java](src/main/java/net/aimeizi/rmi/httpinvoke/example/http/client/HttpUserServiceClient.java)
