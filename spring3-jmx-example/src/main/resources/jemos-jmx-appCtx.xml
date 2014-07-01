@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jemos-jmx.properties</value>
+				<value>classpath:jmxconnector-credentials.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="uk.co.jemos.experiments.jmx" />
+
+	<context:mbean-export default-domain="jemos.mbeans" />
+
+	<bean id="jemosJmxServer"
+		class="org.springframework.jmx.support.ConnectorServerFactoryBean"
+		depends-on="rmiRegistry">
+		<property name="objectName" value="connector:name=rmi" />
+		<property name="serviceUrl"
+			value="service:jmx:rmi://localhost/jndi/rmi://localhost:${jemos.jmx.rmi.port}/jemosJmxConnector" />
+		<property name="environment">
+			<!-- the following is only valid when the sun jmx implementation is used -->
+			<map>
+				<entry key="jmx.remote.x.password.file" value="C:/jmxremote.password" />
+				<entry key="jmx.remote.x.access.file" value="C:/jmxremote.access" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="rmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+		<property name="port" value="${jemos.jmx.rmi.port}" />
+	</bean>
+
+	<bean id="clientConnector"
+		class="org.springframework.jmx.support.MBeanServerConnectionFactoryBean"
+		depends-on="jemosJmxServer">
+		<property name="serviceUrl"
+			value="service:jmx:rmi://localhost/jndi/rmi://localhost:${jemos.jmx.rmi.port}/jemosJmxConnector" />
+		<property name="environment">
+			<map>
+				<entry key="jmx.remote.credentials">
+					<bean class=" org.springframework.util.StringUtils"
+						factory-method="commaDelimitedListToStringArray">
+						<constructor-arg value="${jmx.username},${jmx.password}" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="memoryMxBean" class="java.lang.management.ManagementFactory"
+		factory-method="getMemoryMXBean" />
+		
+    <bean id="memoryWarningService" class="uk.co.jemos.experiments.jmx.MemoryWarningService">
+      <property name="percentageUsageThreshold" value="0.5" />
+    </bean>
+		
+
+	<task:annotation-driven scheduler="myScheduler" />   
+
+    <task:scheduler id="myScheduler" pool-size="10" />    
+		
+
+
+</beans>
