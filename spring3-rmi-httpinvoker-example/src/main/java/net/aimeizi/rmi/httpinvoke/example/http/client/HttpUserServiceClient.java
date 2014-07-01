@@ -20,7 +20,7 @@ public class HttpUserServiceClient {
 		logger.debug("Http User Service Client is starting...");
 		
 		//Http Client Application Context is started... 
-		ApplicationContext context = new ClassPathXmlApplicationContext("httpClientApplicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("HttpClientApplicationContext.xml");
 		
 		//Remote User Service is called via Http Client Application Context...
 		IHttpUserService httpClient = (IHttpUserService) context.getBean("HttpUserService");

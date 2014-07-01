@@ -9,7 +9,7 @@ spring3-rmi-httpinvoker-example
 
 server
 
-* [spring-servlet.xml](src/main/webapp/WEB-INF/spring-servlet.xml)
+* [spring-servlet.xml](src/main/webapp/WEB-INF/spring-servlet.xml) 切记该文件应位于WEB-INF/目录下而不是classpath目录下，否则启动报找不到文件异常
 * [web.xml](src/main/webapp/WEB-INF/web.xml)
 
 
