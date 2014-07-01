@@ -14,8 +14,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import uk.co.jemos.experiments.jmx.mbeans.LoggerConfigurator;
 
 /**
- * System test to test the JMX server startup
- * 
+ *
  * @author mtedone
  * 
  */

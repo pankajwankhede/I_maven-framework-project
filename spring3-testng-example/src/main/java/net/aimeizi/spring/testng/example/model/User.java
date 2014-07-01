@@ -21,7 +21,7 @@ public class User {
     /**
      * Sets User Id
      *
-     * @param String id
+     * @param id
      */
     public void setId(String id) {
         this.id = id;
@@ -39,7 +39,7 @@ public class User {
     /**
      * Sets User Name
      *
-     * @param String name
+     * @param name
      */
     public void setName(String name) {
         this.name = name;
@@ -57,7 +57,7 @@ public class User {
     /**
      * Sets User Surname
      *
-     * @param String surname
+     * @param surname
      */
     public void setSurname(String surname) {
         this.surname = surname;

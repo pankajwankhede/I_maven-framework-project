@@ -1,7 +1,6 @@
-package test;
+package net.aimeizi.spring.testng.example.test;
 
 import junit.framework.Assert;
-
 import net.aimeizi.spring.testng.example.common.exceptions.NonExistentUserException;
 import net.aimeizi.spring.testng.example.model.User;
 import net.aimeizi.spring.testng.example.service.IUserService;
@@ -9,13 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 /**
  * Created by welcome on 2014/7/1 0001.
@@ -66,8 +59,8 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run before any test method belonging to the classes
-     * inside the <test> tag is run.
+     * The annotated method will be run before any net.aimeizi.spring.testng.example.test method belonging to the classes
+     * inside the <net.aimeizi.spring.testng.example.test> tag is run.
      *
      */
     @BeforeTest
@@ -76,7 +69,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run before the first test method in the current class
+     * The annotated method will be run before the first net.aimeizi.spring.testng.example.test method in the current class
      * is invoked.
      *
      */
@@ -87,7 +80,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run before each test method.
+     * The annotated method will be run before each net.aimeizi.spring.testng.example.test method.
      *
      */
     @BeforeMethod
@@ -131,7 +124,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
 
     /**
      * Tests the process of updating user
-     * @throws NonExistentUserException
+     * @throws net.aimeizi.spring.testng.example.common.exceptions.NonExistentUserException
      *
      */
     @Test(expectedExceptions = NonExistentUserException.class)
@@ -149,7 +142,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run after all the test methods in the current class have been run.
+     * The annotated method will be run after all the net.aimeizi.spring.testng.example.test methods in the current class have been run.
      *
      */
     @AfterClass
@@ -158,7 +151,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run after all the test methods belonging to the classes inside the <test> tag have run.
+     * The annotated method will be run after all the net.aimeizi.spring.testng.example.test methods belonging to the classes inside the <net.aimeizi.spring.testng.example.test> tag have run.
      *
      */
     @AfterTest
@@ -167,7 +160,7 @@ public class UserServiceTester extends AbstractTestNGSpringContextTests {
     }
 
     /**
-     * The annotated method will be run after each test method.
+     * The annotated method will be run after each net.aimeizi.spring.testng.example.test method.
      *
      */
     @AfterMethod

@@ -13,7 +13,7 @@ public interface IUserService {
     /**
      * Adds User
      *
-     * @param  User user
+     * @param  user
      * @return boolean whether delete operation is success or not.
      */
     boolean addUser(User user);
@@ -21,7 +21,7 @@ public interface IUserService {
     /**
      * Deletes User
      *
-     * @param  User user
+     * @param  user
      * @return boolean whether delete operation is success or not.
      */
     boolean deleteUser(User user);
@@ -29,7 +29,7 @@ public interface IUserService {
     /**
      * Updates User
      *
-     * @param  User user
+     * @param  user
      * @throws NonExistentUserException
      */
     void updateUser(User user) throws NonExistentUserException;
@@ -37,7 +37,7 @@ public interface IUserService {
     /**
      * Gets User
      *
-     * @param  String User Id
+     * @param  id
      * @return User
      */
     User getUserById(String id);

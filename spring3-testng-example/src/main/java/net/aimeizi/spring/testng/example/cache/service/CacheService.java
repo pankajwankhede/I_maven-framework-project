@@ -24,7 +24,7 @@ public class CacheService implements ICacheService {
     /**
      * Sets User Map
      *
-     * @param ConcurrentHashMap User Map
+     * @param userMap
      */
     public void setUserMap(ConcurrentHashMap<String, User> userMap) {
         this.userMap = userMap;

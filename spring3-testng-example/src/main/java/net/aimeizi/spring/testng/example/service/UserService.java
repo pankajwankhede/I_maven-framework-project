@@ -17,7 +17,7 @@ public class UserService implements IUserService {
     /**
      * Adds User
      *
-     * @param  User user
+     * @param  user
      * @return boolean whether delete operation is success or not.
      */
     public boolean addUser(User user) {
@@ -33,7 +33,7 @@ public class UserService implements IUserService {
     /**
      * Deletes User
      *
-     * @param  User user
+     * @param  user
      * @return boolean whether delete operation is success or not.
      */
     public boolean deleteUser(User user) {
@@ -47,7 +47,7 @@ public class UserService implements IUserService {
     /**
      * Updates User
      *
-     * @param  User user
+     * @param  user
      * @throws NonExistentUserException
      */
     public void updateUser(User user) throws NonExistentUserException {
@@ -61,7 +61,7 @@ public class UserService implements IUserService {
     /**
      * Gets User
      *
-     * @param  String User Id
+     * @param  id
      * @return User
      */
     public User getUserById(String id) {
@@ -89,7 +89,7 @@ public class UserService implements IUserService {
     /**
      * Sets Cache Service
      *
-     * @param ICacheService - Cache Service
+     * @param cacheService
      */
     public void setCacheService(ICacheService cacheService) {
         this.cacheService = cacheService;
