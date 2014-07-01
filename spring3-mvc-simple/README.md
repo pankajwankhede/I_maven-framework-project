@@ -1,7 +1,7 @@
 spring3-mvc-simple
 =======================
 
-基于全注解方式的Spring MVC例子
+基于全注解配置的Spring MVC例子
 
 需要注意的文件:
 
@@ -12,7 +12,7 @@ spring3-mvc-simple
 
 ## 1. 使用maven tomcat plugin方式运行
 
-tomcat 7
+Tomcat 7
 
 ```bash
 mvn tomcat7:run
