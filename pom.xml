@@ -12,6 +12,7 @@
   	<module>spring3-jmx-example</module>
   	<module>spring3-rmi-example</module>
   	<module>spring3-rmi-httpinvoker-example</module>
-      <module>spring-boot-example</module>
+    <module>spring-boot-example</module>
+    <module>spring3-testng-example</module>
   </modules>
 </project>
