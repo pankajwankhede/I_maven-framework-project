@@ -1,0 +1,19 @@
+spring3-rmi-httpinvoker-example
+=======================
+
+基于Spring Http invoker的远程方法调用
+
+先使用```mvn jetty:run```运行服务端，再运行```HttpUserServiceClient```client端。注意看控制台日志输出
+
+注意的配置文件
+
+server
+
+* [spring-servlet.xml](src/main/webapp/WEB-INF/spring-servlet.xml)
+* [web.xml](src/main/webapp/WEB-INF/web.xml)
+
+
+client
+
+* [httpClientApplicationContext.xml](src/main/resources/httpClientApplicationContext.xml)
+* [HttpUserServiceClient.java](src/main/java/net/aimeizi/rmi/httpinvoke/example/http/client/HttpUserServiceClient.java)

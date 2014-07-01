@@ -11,5 +11,6 @@
   	<module>spring3-mvc-simple</module>
   	<module>spring3-jmx-example</module>
   	<module>spring3-rmi-example</module>
+  	<module>spring3-rmi-httpinvoker-example</module>
   </modules>
 </project>

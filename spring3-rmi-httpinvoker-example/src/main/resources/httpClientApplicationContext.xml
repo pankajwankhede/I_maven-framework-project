@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Http Invoker Client Declaration -->
+    <bean id="HttpUserService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<!-- serviceUrl represents Http Service Url called-->
+        <property name="serviceUrl" value="http://127.0.0.1:8080/HttpUserService"/>
+		<!-- serviceInterface represents Http Service Interface called -->
+        <property name="serviceInterface" value="net.aimeizi.rmi.httpinvoke.example.http.server.IHttpUserService"/>
+    </bean>
+    
+</beans>
