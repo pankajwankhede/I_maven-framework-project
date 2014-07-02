@@ -18,7 +18,12 @@ import net.aimeizi.spring.rest.example.customer.internal.CustomerNumberTypeAdapt
 @XmlJavaTypeAdapter(CustomerNumberTypeAdapter.class)
 public class CustomerNumber {
 
-    private final String number;
+    public String getNumber() {
+		return number;
+	}
+
+
+	private final String number;
 
 
     @Override
@@ -37,4 +42,10 @@ public class CustomerNumber {
 
         return new CustomerNumber(UUID.randomUUID().toString());
     }
+
+
+	public CustomerNumber(String number) {
+		super();
+		this.number = number;
+	}
 }

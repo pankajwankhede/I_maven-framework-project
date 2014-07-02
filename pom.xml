@@ -24,6 +24,8 @@
     <module>resteasy-ws-example</module>
     <module>cxf-soap-ws</module>
     <module>cxf-rest-ws</module>
+    <module>flex-todolist-example</module>
+    <module>spring-flex-testdrive</module>
   </modules>
   
   <build>

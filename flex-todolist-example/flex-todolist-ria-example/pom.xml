@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.aimeizi</groupId>
+		<artifactId>flex-todolist-example</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>flex-todolist-ria-example</artifactId>
+	<packaging>swf</packaging>
+	<name>flex-todolist-ria-example Maven Flex</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+	
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>flex-todolist-config-example</artifactId>
+            <version>${project.version}</version>
+            <classifier>resources</classifier>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>playerglobal</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>swc</type>
+            <scope>external</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>flex</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>framework</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>framework</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>resource-bundle</type>
+            <classifier>en_US</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>rpc</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>rpc</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>resource-bundle</type>
+            <classifier>en_US</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdk</groupId>
+            <artifactId>utilities</artifactId>
+            <version>3.0.0.3.0.0.477</version>
+            <type>swc</type>
+        </dependency>
+    </dependencies>
+    
+    <build>
+    
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        
+        <defaultGoal>install</defaultGoal>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}/target/generated-resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>info.rvin.mojo</groupId>
+                <artifactId>flex-compiler-mojo</artifactId>
+                <version>1.0-beta3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <locales>
+                        <param>en_US</param>
+                    </locales>
+                    <contextRoot>flex-todolist-web-example</contextRoot>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-config</id>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/generated-resources</outputDirectory>
+                            <includeArtifacIds>flex-todolist-config-example</includeArtifacIds>
+                            <includeGroupIds>${project.groupId}</includeGroupIds>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
