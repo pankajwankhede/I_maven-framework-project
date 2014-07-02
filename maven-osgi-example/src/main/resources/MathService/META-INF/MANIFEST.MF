@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-Name: MathService
+Bundle-Activator: com.linkwithweb.osgi.service.MathServiceActivator
+Bundle-SymbolicName: MathService
+Bundle-Version: 1.0.0
+Import-Package: org.osgi.framework
+Export-Package: com.linkwithweb.osgi.service
