@@ -11,7 +11,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.*;
 
 /**
- * Created by welcome on 2014/7/1 0001.
+ * Created by 冯靖 on 2014/7/1 0001.
  */
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class UserServiceTester extends AbstractTestNGSpringContextTests {
