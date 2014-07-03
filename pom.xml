@@ -66,6 +66,7 @@
 		<module>flex-todolist-example</module>
 		<module>spring-flex-testdrive</module>
 		<module>helloworld-osgi-example</module>
+		<module>simple-osgi-webapp</module>
 	</modules>
 
 	<properties>
