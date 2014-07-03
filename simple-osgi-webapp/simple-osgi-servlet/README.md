@@ -33,6 +33,35 @@ install file:/D:/workunit/maven-framework-project/simple-osgi-webapp/simple-osgi
 
 ![](src/main/resources/osgi-felix-web.jpg)
 
+
+安装Apache Felix Web Console
+
+```
+install http://repo1.maven.org/maven2/org/apache/felix/org.apache.felix.webconsole/2.0.6/org.apache.felix.webconsole-2.0.6.jar
+```
+
+查看Apache Felix Web Console
+
+![](src/main/resources/osgi-felix-webconsole.jpg)
+
+登录
+
+admin/admin
+
+bundles
+
+![](src/main/resources/osgi-felix-webconsole-bundles.jpg)
+
+logs
+
+![](src/main/resources/osgi-felix-webconsole-logs.jpg)
+
+System Information
+
+![](src/main/resources/osgi-felix-webconsole-sysinfo.jpg)
+
+
+
 # 参考文章
 
 [http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html](http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html)
