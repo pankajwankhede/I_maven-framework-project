@@ -6,6 +6,44 @@
 	<artifactId>maven-framework-project</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
+
+	<name>maven-framework-project</name>
+	<url>https://github.com/v5developer/maven-framework-project</url>
+
+	<!-- 问题解决信息 -->
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/v5developer/maven-framework-project/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+
+	<scm>
+		<url>https://github.com/v5developer/maven-framework-project</url>
+		<connection>scm:git:git://github.com:v5developer/maven-framework-project.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:v5developer/maven-framework-project.git</developerConnection>
+	</scm>
+
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/nexus/content/repositories/releases</url>
+			<name>Nexus Releases Repository</name>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+			<name>Nexus Snapshots Repository</name>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<modules>
 		<module>spring3-javaconfig-example</module>
 		<module>spring3-helloworld-example</module>
@@ -28,6 +66,11 @@
 		<module>flex-todolist-example</module>
 		<module>spring-flex-testdrive</module>
 	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+	</properties>
+
 
 	<repositories>
 
@@ -175,27 +218,263 @@
 
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.jetty</groupId>
-					<artifactId>jetty-maven-plugin</artifactId>
-					<version>9.2.1.v20140609</version>
-				</plugin>
 
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
+		<plugins>
 
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat6-maven-plugin</artifactId>
-					<version>2.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+			<!-- mvn jetty:run -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.1.v20140609</version>
+			</plugin>
+
+			<!-- mvn tomcat7:run -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+
+			<!-- mvn tomcat6:run -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+
+			<!-- maven jboss plugin -->
+
+			<!-- mvn clean package -->
+
+			<!-- jboss:start -->
+
+			<!-- mvn jboss:hard-deploy -->
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jboss-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<hostName>localhost</hostName>
+					<port>8080</port>
+					<jbossHome>D:/jboss-4.2.3.GA</jbossHome>
+					<fileName>target/maven-framework.war</fileName>
+					<serverName>all</serverName>
+				</configuration>
+			</plugin>
+
+
+			<!-- jboss-as-maven-plugin -->
+			<!-- mvn jboss-as:deploy -->
+			<!-- mvn jboss-as:run -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.4.Final</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.14.1</version>
+				<!-- 跳过单元测试 -->
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.14.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<locales>zh_CN</locales>
+					<outputEncoding>utf-8</outputEncoding>
+					<reportPlugins>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.9</version>
+							<configuration>
+								<encoding>utf-8</encoding>
+								<docencoding>utf-8</docencoding>
+								<charset>utf-8</charset>
+							</configuration>
+						</plugin>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.6</version>
+							<configuration>
+								<dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+								<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+							</configuration>
+							<reportSets>
+								<reportSet>
+									<reports>
+										<report>dependencies</report>
+										<report>project-team</report>
+										<report>mailing-list</report>
+										<report>cim</report>
+										<report>issue-tracking</report>
+										<report>license</report>
+										<report>scm</report>
+									</reports>
+								</reportSet>
+							</reportSets>
+						</plugin>
+
+						<!-- 测试报告 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-surefire-report-plugin</artifactId>
+							<version>2.14.1</version>
+						</plugin>
+
+						<!-- 项目源代码分析报告 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-pmd-plugin</artifactId>
+							<version>2.7.1</version>
+							<configuration>
+								<linkXref>true</linkXref>
+								<sourceEncoding>utf-8</sourceEncoding>
+								<minimumTokens>100</minimumTokens>
+								<targetJdk>1.6</targetJdk>
+								<rulesets>
+									<ruleset>/rulesets/basic.xml</ruleset>
+									<ruleset>/rulesets/imports.xml</ruleset>
+									<ruleset>/rulesets/unusedcode.xml</ruleset>
+									<ruleset>/rulesets/finalizers.xml</ruleset>
+									<ruleset>/rulesets/controversial.xml</ruleset>
+									<ruleset>/rulesets/strings.xml</ruleset>
+									<ruleset>/rulesets/strictexception.xml</ruleset>
+									<ruleset>/rulesets/optimizations.xml</ruleset>
+									<ruleset>/rulesets/naming.xml</ruleset>
+								</rulesets>
+							</configuration>
+						</plugin>
+
+						<!-- 生成站点文件具体信息报告 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-linkcheck-plugin</artifactId>
+							<version>1.1</version>
+							<configuration>
+							</configuration>
+						</plugin>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-jxr-plugin</artifactId>
+							<version>2.3</version>
+						</plugin>
+
+						<!-- 用于在站点中生成测试覆盖率报告 -->
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>cobertura-maven-plugin</artifactId>
+							<version>2.5.2</version>
+							<configuration>
+								<sourceEncoding>utf-8</sourceEncoding>
+								<targetJdk>1.6</targetJdk>
+							</configuration>
+						</plugin>
+
+						<!-- eclipse插件, 设定wtp版本 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-eclipse-plugin</artifactId>
+							<version>2.9</version>
+							<configuration>
+								<downloadSources>true</downloadSources>
+								<downloadJavadocs>false</downloadJavadocs>
+								<wtpversion>2.0</wtpversion>
+								<!-- 增加设置项目encoding的文件 -->
+								<additionalConfig>
+									<file>
+										<name>.settings/org.eclipse.core.resources.prefs</name>
+										<content>
+								<![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=${project.build.sourceEncoding}${line.separator}]]>
+										</content>
+									</file>
+								</additionalConfig>
+							</configuration>
+						</plugin>
+
+						<!-- resource插件 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-resources-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+
+						<!-- install插件 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-install-plugin</artifactId>
+							<version>2.4</version>
+						</plugin>
+
+						<!-- clean插件 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-clean-plugin</artifactId>
+							<version>2.5</version>
+						</plugin>
+
+						<!-- ant插件 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-antrun-plugin</artifactId>
+							<version>1.7</version>
+						</plugin>
+
+						<!-- dependency插件 -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<version>2.6</version>
+						</plugin>
+
+					</reportPlugins>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+
 	</build>
 
 </project>
