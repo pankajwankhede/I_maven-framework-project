@@ -1,5 +1,6 @@
 # maven-framework-project
 
+[![Build Status](https://travis-ci.org/v5developer/maven-framework-project.svg?branch=master)](https://travis-ci.org/v5developer/maven-framework-project)
 
 这里不仅生产代码，还搬运代码
 

@@ -31,43 +31,4 @@
         </pluginManagement>
     </build>
 
-    <repositories>
-                
-        <repository>
-            <id>flex-mojos</id>
-            <url>http://josephj.com/lab/flex-mojos/flex-mojos-read-only/repository/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-   
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>flex-mojos-repository</id>
-            <url>http://flex-mojos.googlecode.com/svn/trunk/repository/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        
-        <pluginRepository>
-            <id>flex-mojos</id>
-            <url>http://josephj.com/lab/flex-mojos/flex-mojos-read-only/repository/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
 </project>

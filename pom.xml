@@ -1,55 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>net.aimeizi</groupId>
-  <artifactId>maven-framework-project</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <modules>
-  	<module>spring3-javaconfig-example</module>
-  	<module>spring3-helloworld-example</module>
-  	<module>spring3-javaconfig-import-example</module>
-  	<module>spring3-mvc-simple</module>
-  	<module>spring3-jmx-example</module>
-  	<module>spring3-rmi-example</module>
-  	<module>spring3-rmi-httpinvoker-example</module>
-    <module>spring-boot-example</module>
-    <module>spring3-testng-example</module>
-	<module>spring3-rest-example</module>
-    <module>spring3-jersey-restfull-example</module>
-    <module>maven-osgi-example</module>
-    <module>jersey-restful-ws-example</module>
-    <module>jersey-jaxb-ws-example</module>
-    <module>jaxws-with-spring</module>
-    <module>resteasy-ws-example</module>
-    <module>cxf-soap-ws</module>
-    <module>cxf-rest-ws</module>
-    <module>flex-todolist-example</module>
-    <module>spring-flex-testdrive</module>
-  </modules>
-  
-  <build>
-  	<pluginManagement>
-  		<plugins>
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.2.1.v20140609</version>
-			</plugin>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.aimeizi</groupId>
+	<artifactId>maven-framework-project</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>spring3-javaconfig-example</module>
+		<module>spring3-helloworld-example</module>
+		<module>spring3-javaconfig-import-example</module>
+		<module>spring3-mvc-simple</module>
+		<module>spring3-jmx-example</module>
+		<module>spring3-rmi-example</module>
+		<module>spring3-rmi-httpinvoker-example</module>
+		<module>spring-boot-example</module>
+		<module>spring3-testng-example</module>
+		<module>spring3-rest-example</module>
+		<module>spring3-jersey-restfull-example</module>
+		<module>maven-osgi-example</module>
+		<module>jersey-restful-ws-example</module>
+		<module>jersey-jaxb-ws-example</module>
+		<module>jaxws-with-spring</module>
+		<module>resteasy-ws-example</module>
+		<module>cxf-soap-ws</module>
+		<module>cxf-rest-ws</module>
+		<module>flex-todolist-example</module>
+		<module>spring-flex-testdrive</module>
+	</modules>
 
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-			</plugin>
+	<repositories>
 
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat6-maven-plugin</artifactId>
-				<version>2.2</version>
-			</plugin>
-		</plugins>
-  	</pluginManagement>
-  </build>
-  
+		<repository>
+			<id>nexus-osc</id>
+			<name>osc private nexus</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>spring-io</id>
+			<name>spring private nexus</name>
+			<url>http://repo.spring.io/release/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>ibiblio</id>
+			<name>ibiblio private nexus</name>
+			<url>http://mirrors.ibiblio.org/maven2/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>spring-io-milestone</id>
+			<name>spring milestone private nexus</name>
+			<url>http://repo.spring.io/milestone/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>jboss</id>
+			<name>jboss private nexus</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>alfresco</id>
+			<name>alfresco private nexus</name>
+			<url>https://maven.alfresco.com/nexus/content/repositories/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>maven-db-plugin-repo</id>
+			<name>maven db plugin repository</name>
+			<url>http://maven-db-plugin.googlecode.com/svn/maven/repo</url>
+			<layout>default</layout>
+		</repository>
+
+		<repository>
+			<id>flex-mojos</id>
+			<url>http://josephj.com/lab/flex-mojos/flex-mojos-read-only/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>flex-mojos-repository</id>
+			<url>http://flex-mojos.googlecode.com/svn/trunk/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
+	<pluginRepositories>
+
+		<pluginRepository>
+			<id>nexus-osc</id>
+			<name>osc private nexus</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>flex-mojos</id>
+			<url>http://josephj.com/lab/flex-mojos/flex-mojos-read-only/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>flex-mojos-repository</id>
+			<url>http://flex-mojos.googlecode.com/svn/trunk/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+
+	</pluginRepositories>
+
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>9.2.1.v20140609</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat6-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
 </project>
