@@ -1,0 +1,19 @@
+language: java
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+
+before_script:
+
+script:
+- mvn test
+
+env: MAVEN_OPTS="-XX:MaxPermSize=256m"
+
+addons:
+  firefox: "22.0"
+
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
