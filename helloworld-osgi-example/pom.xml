@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.aimeizi</groupId>
+		<artifactId>maven-framework-project</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>helloworld-osgi-example</artifactId>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- This plugin takes care of packaging the artifact as an OSGi Bundle -->
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.5.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<!-- OSGi Manifest Metadata is specified here -->
+						<!-- The Bundle SymbolicName is the same as the artifact ID -->
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+
+						<!-- Specify the Bundle activator, which is invoked when the Bundle 
+							is started -->
+						<Bundle-Activator>net.aimeizi.osgi.helloworld.example.Activator</Bundle-Activator>
+
+						<!-- Automatically compute all the necessary Import-Package statements -->
+						<Import-Package>*</Import-Package>
+
+						<!-- This bundle does not export any packages -->
+						<Export-Package />
+
+						<!-- Packages that are not exported but need to be included need to 
+							be listed as Private-Package -->
+						<Private-Package>net.aimeizi.osgi.helloworld.example</Private-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+
+			<!-- JBoss AS plugin to deploy war -->
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.5.Final</version>
+				<configuration>
+					<filename>${project.build.finalName}.jar</filename>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
