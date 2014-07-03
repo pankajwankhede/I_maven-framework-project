@@ -28,7 +28,7 @@ install file:/D:/workunit/maven-framework-project/simple-osgi-webapp/simple-osgi
 
 浏览器访问
 
-![http://localhost:8080/](http://localhost:8080/)
+[http://localhost:8080/](http://localhost:8080/)
 
 ![](simple-osgi-servlet/src/main/resources/osgi-felix-web.jpg)
 
