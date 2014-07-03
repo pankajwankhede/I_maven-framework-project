@@ -1,0 +1,1 @@
+java -classpath ../tomcat/webapps/ROOT/WEB-INF/classes;../tomcat/lib/activemq-5.3.0/* flex.spring.samples.jmschat.JMSChat  
