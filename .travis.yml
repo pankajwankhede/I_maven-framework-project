@@ -12,7 +12,7 @@ script:
 env: MAVEN_OPTS="-XX:MaxPermSize=256m"
 
 addons:
-  firefox: "22.0"
+  firefox: "30.0"
 
 before_install:
   - "export DISPLAY=:99.0"
