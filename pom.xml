@@ -69,6 +69,7 @@
 		<module>simple-osgi-webapp</module>
 		<module>flyway-example</module>
 		<module>workflow-activiti-example</module>
+		<module>spring4-hibernate4-example</module>
 	</modules>
 
 	<properties>

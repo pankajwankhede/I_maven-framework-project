@@ -6,7 +6,9 @@ target
 *.db
 .lock
 *.iml
+*.springBeans
 .gradle
 build
 dependency-reduced-pom.xml
 /src
+
