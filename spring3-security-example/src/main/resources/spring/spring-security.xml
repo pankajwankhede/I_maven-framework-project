@@ -1,0 +1,23 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <beans:bean id="hsqlAuthenticationProvider" class="org.spring3.security.example.security.HSQLAuthenticationProvider" />
+    <http auto-config="true" use-expressions="true" disable-url-rewriting="true">
+
+        <intercept-url pattern="/resources/**" access="permitAll"/>
+        <intercept-url pattern="/admin.htm" access="hasAnyRole('ADMIN')"/>
+            <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')"/>
+
+    </http>
+
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="hsqlAuthenticationProvider"/>
+    </authentication-manager>
+
+</beans:beans>
