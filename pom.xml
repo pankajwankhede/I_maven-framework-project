@@ -68,6 +68,7 @@
 		<module>helloworld-osgi-example</module>
 		<module>simple-osgi-webapp</module>
 		<module>flyway-example</module>
+		<module>workflow-activiti-example</module>
 	</modules>
 
 	<properties>

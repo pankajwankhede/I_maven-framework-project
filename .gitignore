@@ -3,6 +3,8 @@
 target
 .classpath
 .idea
+*.db
+.lock
 *.iml
 .gradle
 build
