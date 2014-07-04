@@ -1,0 +1,17 @@
+<project name="flyway" default="migrate-db" xmlns:flyway="antlib:org.flywaydb.ant">
+    <target name="migrate-db">
+        <taskdef uri="antlib:org.flywaydb.ant" resource="org/flywaydb/ant/antlib.xml">
+            <classpath>
+                <pathelement location="libs/flyway-core-3.0.jar"/>
+                <pathelement location="libs/flyway-ant-3.0.jar"/>
+            </classpath>
+        </taskdef>
+
+        <path id="flyway.classpath">
+            <fileset dir="./libs" includes="h2-1.3.170.jar"/>
+        </path>
+        <property name="flyway.locations" value="filesystem:./migrations"/>
+
+        <flyway:migrate url="jdbc:h2:file:target/flyway" user="SA"/>
+    </target>
+</project>

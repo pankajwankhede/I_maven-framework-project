@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.aimeizi</groupId>
+		<artifactId>flyway-example</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>flyway-ant-example</artifactId>
+	<name>flyway-ant-example</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<java.version>1.5</java.version>
+		<jdbc.driver>org.hsqldb.jdbcDriver</jdbc.driver>
+		<jdbc.url>jdbc:hsqldb:file:target/flyway;shutdown=true</jdbc.url>
+		<jdbc.username>sa</jdbc.username>
+		<jdbc.password></jdbc.password>
+
+		<hsqldb.version>2.2.9</hsqldb.version>
+		<flyway.version>3.0</flyway.version>
+	</properties>
+
+	<build>
+		<defaultGoal>antrun:run</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<configuration>
+					<target>
+						<path id="project.classpath">
+							<path refid="maven.plugin.classpath" />
+							<pathelement location="." />
+						</path>
+
+						<path id="flyway.classpath">
+							<pathelement location="." />
+						</path>
+
+						<property name="flyway.driver" value="${jdbc.driver}" />
+						<property name="flyway.url" value="${jdbc.url}" />
+						<property name="flyway.user" value="${jdbc.username}" />
+						<property name="flyway.password" value="${jdbc.password}" />
+						<property name="flyway.initVersion" value="0" />
+
+						<taskdef name="migrate" classname="org.flywaydb.ant.MigrateTask" />
+						<taskdef name="clean" classname="org.flywaydb.ant.CleanTask" />
+						<taskdef name="init" classname="org.flywaydb.ant.InitTask" />
+
+						<clean />
+
+						<init table="SCHEMA_VERSION_PERSON" />
+						
+						<migrate table="SCHEMA_VERSION_PERSON">
+							<locations>
+								<location path="migrations" />
+							</locations>
+						</migrate>
+
+					</target>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.flywaydb</groupId>
+						<artifactId>flyway-ant</artifactId>
+						<version>${flyway.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.hsqldb</groupId>
+						<artifactId>hsqldb</artifactId>
+						<version>${hsqldb.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
