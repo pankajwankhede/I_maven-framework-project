@@ -9,5 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>workflow-activiti-springmvc-example</module>
+  	<module>spring-activiti-webapp</module>
   </modules>
 </project>

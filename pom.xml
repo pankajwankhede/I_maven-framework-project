@@ -157,19 +157,6 @@
 		</repository>
 
 		<repository>
-			<id>maven-db-plugin-repo</id>
-			<name>maven db plugin repository</name>
-			<url>http://maven-db-plugin.googlecode.com/svn/maven/repo</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
 			<id>flex-mojos</id>
 			<url>http://josephj.com/lab/flex-mojos/flex-mojos-read-only/repository/</url>
 			<releases>

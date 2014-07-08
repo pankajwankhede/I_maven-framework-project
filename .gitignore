@@ -5,7 +5,7 @@ target
 .idea
 *.db
 .lock
-.log
+*.log
 *.iml
 *.springBeans
 .gradle
