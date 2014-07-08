@@ -74,6 +74,7 @@
 		<module>hibernate-search-example</module>
 		<module>springmvc-springdata-mongodb</module>
 		<module>spring-mongodb-tutorial</module>
+		<module>spring-security-tutorial</module>
 	</modules>
 
 	<properties>
@@ -160,6 +161,12 @@
 			<name>maven db plugin repository</name>
 			<url>http://maven-db-plugin.googlecode.com/svn/maven/repo</url>
 			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 
 		<repository>
@@ -230,11 +237,8 @@
 			</plugin>
 
 			<!-- maven jboss plugin -->
-
 			<!-- mvn clean package -->
-
 			<!-- jboss:start -->
-
 			<!-- mvn jboss:hard-deploy -->
 
 			<plugin>
@@ -349,7 +353,7 @@
 							<version>2.14.1</version>
 						</plugin>
 
-						<!-- 项目源代码分析报�? -->
+						<!-- 项目源代码分析报告 -->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-pmd-plugin</artifactId>
@@ -388,7 +392,7 @@
 							<version>2.3</version>
 						</plugin>
 
-						<!-- 用于在站点中生成测试覆盖率报�? -->
+						<!-- 用于在站点中生成测试覆盖率报告 -->
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>cobertura-maven-plugin</artifactId>
@@ -408,7 +412,7 @@
 								<downloadSources>true</downloadSources>
 								<downloadJavadocs>false</downloadJavadocs>
 								<wtpversion>2.0</wtpversion>
-								<!-- 增加设置项目encoding的文�? -->
+								<!-- 增加设置项目encoding -->
 								<additionalConfig>
 									<file>
 										<name>.settings/org.eclipse.core.resources.prefs</name>
