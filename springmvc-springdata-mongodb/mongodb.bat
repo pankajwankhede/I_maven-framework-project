@@ -1,0 +1,1 @@
+F:\mongodb\bin\mongod.exe --auth --dbpath "F:\mongodb\db" --logpath "F:\mongodb\log\log.txt" --install

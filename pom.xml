@@ -72,6 +72,8 @@
 		<module>spring4-hibernate4-example</module>
 		<module>spring3-security-example</module>
 		<module>hibernate-search-example</module>
+		<module>springmvc-springdata-mongodb</module>
+		<module>spring-mongodb-tutorial</module>
 	</modules>
 
 	<properties>

@@ -1,0 +1,10 @@
+# springmvc-springdata-mongodb
+
+
+创建`mongodemo`数据库,并为该数据库创建`root/root`(用户名/密码),且为该用户授权(readWrite、dbAdmin、readAnyDatabase、readWriteAnyDatabase)
+
+具体参考[src/main/webapp/WEB-INF/spring/appServlet/controllers.xml](src/main/webapp/WEB-INF/spring/appServlet/controllers.xml)中的配置信息
+
+[http://localhost:8080/](http://localhost:8080/)
+
+[https://github.com/ulrich/springmvc-springdata-mongodb](https://github.com/ulrich/springmvc-springdata-mongodb)
