@@ -75,6 +75,7 @@
 		<module>springmvc-springdata-mongodb</module>
 		<module>spring-mongodb-tutorial</module>
 		<module>spring-security-tutorial</module>
+		<module>xml-tutorials</module>
 	</modules>
 
 	<properties>
