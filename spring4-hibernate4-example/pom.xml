@@ -48,11 +48,6 @@
 		</dependency>
 
 		<!-- Database -->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.3-1101-jdbc41</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -138,7 +133,6 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework</groupId>

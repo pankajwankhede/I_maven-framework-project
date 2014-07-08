@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/jdbc 
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<context:annotation-config/>
+	
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<context:component-scan base-package="org.hibernate.search.hibernate.example">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+    
+    <!-- 阿里 Druid数据源 -->
+	<!-- https://github.com/alibaba/druid/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98 -->
+	<bean id="hibernate4DataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="url" value="${log4jdbc.url}"></property>
+		<property name="driverClassName" value="${log4jdbc.driverClassName}"></property>
+		<property name="initialSize" value="1" />
+		<property name="minIdle" value="1" /> 
+		<property name="maxActive" value="20" />
+		<property name="maxWait" value="60000" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+		<property name="filters" value="stat,log4j" />		
+	</bean>
+    
+    <!-- 数据初始化导入 -->
+   
+	<jdbc:initialize-database data-source="hibernate4DataSource">
+ 		<jdbc:script location="classpath:hibernate_search.sql" encoding="utf-8"/>
+ 	</jdbc:initialize-database> 
+ 	
+ 	
+	<bean id="hibernate4sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="hibernate4DataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<!-- <prop key="hibernate.show_sql">true</prop> -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<!-- hibernate cache -->
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">ehcache.xml</prop>
+				<!-- hibernate search configuration -->
+				<prop key="hibernate.search.lucene_version">LUCENE_36</prop>
+				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
+				<prop key="hibernate.search.default.indexBase">target/lucene/indexes</prop>
+				<!-- hibernate search Index Optimization -->
+				<prop key="hibernate.search.default.optimizer.operation_limit.max">1000</prop>
+				<prop key="hibernate.search.default.optimizer.transaction_limit.max">100</prop>
+			</props>
+		</property>
+		
+		<property name="packagesToScan">
+			<list>
+				<value>org.hibernate.search.hibernate.example.model</value>
+			</list>
+		</property>
+
+		<!--   		
+		<property name="annotatedClasses">
+			<list>
+				<value>org.hibernate.search.hibernate.example.model.Author</value>
+				<value>org.hibernate.search.hibernate.example.model.Book</value>
+			</list>
+		</property>
+		-->
+		
+		<!-- 
+			<property name="mappingResources">
+				<list>
+					<value>org/hibernate/search/hibernate/example/model/Author.hbm.xml</value>
+					<value>org/hibernate/search/hibernate/example/model/Book.hbm.xml</value>
+				</list>
+			</property>
+		-->
+		
+	</bean>
+	
+	<bean class="org.hibernate.search.hibernate.example.IndexManger" depends-on="hibernate4sessionFactory"/>
+	
+	<bean id="hibernate4TransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hibernate4sessionFactory"></property>
+	</bean>
+	
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+	<tx:annotation-driven transaction-manager="hibernate4TransactionManager"/>
+	
+	<tx:advice id="txAdvice" transaction-manager="hibernate4TransactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />  
+	        <tx:method name="add*" propagation="REQUIRED" />  
+	        <tx:method name="create*" propagation="REQUIRED" />  
+	        <tx:method name="insert*" propagation="REQUIRED" />  
+	        <tx:method name="update*" propagation="REQUIRED" />  
+	        <tx:method name="merge*" propagation="REQUIRED" />  
+	        <tx:method name="del*" propagation="REQUIRED" />  
+	        <tx:method name="remove*" propagation="REQUIRED" />  
+	        <tx:method name="put*" propagation="REQUIRED" />  
+	        <tx:method name="use*" propagation="REQUIRED"/>  
+	        <!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->  
+	        <tx:method name="get*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="count*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="find*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="list*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="query*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="load*" propagation="REQUIRED" read-only="true" />  
+	        <tx:method name="*" read-only="true" />  
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config expose-proxy="true">
+		<aop:pointcut expression="execution(* org.hibernate.search.hibernate.example.service.*.*(..))" id="pointcut"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+</beans>

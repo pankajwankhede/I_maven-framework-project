@@ -71,6 +71,7 @@
 		<module>workflow-activiti-example</module>
 		<module>spring4-hibernate4-example</module>
 		<module>spring3-security-example</module>
+		<module>hibernate-search-example</module>
 	</modules>
 
 	<properties>
