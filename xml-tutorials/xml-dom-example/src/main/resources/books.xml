@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <book id="1">
+        <name>Android应用开发详解</name>
+        <author>json</author>
+        <price>88</price>
+        <pubinfo>人民邮电出版社</pubinfo>
+    </book>
+    <book id="2">
+        <name>Android权威指南</name>
+        <author>tom</author>
+        <price>79</price>
+        <pubinfo>人民教育出版社</pubinfo>
+    </book>
+    <book id="3">
+        <name>Android开发案例大全</name>
+        <author>mark</author>
+        <price>68</price>
+        <pubinfo>电子工业出版社</pubinfo>
+    </book>
+    <book id="4">
+        <name>Android从入门到精通</name>
+        <author>jack</author>
+        <price>68</price>
+        <pubinfo>电子工业出版社</pubinfo>
+    </book>
+    <book id="5">
+        <name>Pro Spring</name>
+        <author>mark</author>
+        <price>68</price>
+        <pubinfo>电子工业出版社</pubinfo>
+    </book>
+</data>

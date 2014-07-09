@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -9,5 +10,12 @@
   <packaging>pom</packaging>
   <modules>
   	<module>xml-stax-example</module>
+  	<module>xml-xom-example</module>
+  	<module>xml-xstream-example</module>
+  	<module>xml-jaxb-example</module>
+  	<module>xml-sax-example</module>
+  	<module>xml-xmlpull-example</module>
+  	<module>xml-dom-example</module>
+    <module>xml-2-properties</module>
   </modules>
 </project>

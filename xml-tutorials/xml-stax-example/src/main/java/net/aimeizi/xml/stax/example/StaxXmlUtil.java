@@ -172,7 +172,7 @@ public class StaxXmlUtil {
 	@Test
 	public void xmlStreamWriterXML() throws XMLStreamException, FactoryConfigurationError {
 		XMLStreamWriter xsw = XMLOutputFactory.newInstance().createXMLStreamWriter(System.out);  
-        xsw.writeStartDocument("GBK","1.0");  
+        xsw.writeStartDocument("utf-8","1.0");  
         
         String namespaceURI = "http://blog.csdn.net/jadyer";  
         xsw.writeStartElement("pre", "uesr", namespaceURI); //再写<pre:uesr>  
@@ -192,7 +192,7 @@ public class StaxXmlUtil {
         
         xsw.writeEndElement();                              //再写</pre:uesr>  
         
-        xsw.writeEndDocument(); //先写<?xml version="1.0" encoding="GBK"?>  
+        xsw.writeEndDocument(); //先写<?xml version="1.0" encoding="utf-8"?>  
         
         xsw.flush();  
         xsw.close();  

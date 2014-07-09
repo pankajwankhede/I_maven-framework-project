@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Support Email</comment>
+	<entry key="email.address">sxyx2008@163.com</entry>
+	<entry key="email.password">*********</entry>
+	<entry key="email.host">smtp.163.com</entry>
+	<entry key="email.port">25</entry>
+</properties>
