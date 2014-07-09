@@ -1,0 +1,9 @@
+{
+  "data1": 100,
+  "data2": "hello",
+  "list": [
+    "String 1",
+    "String 2",
+    "String 3"
+  ]
+}

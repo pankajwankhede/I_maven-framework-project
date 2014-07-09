@@ -7,16 +7,12 @@
 		<artifactId>maven-framework-project</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>xml-tutorials</artifactId>
+	<artifactId>json-tutorials</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>xml-stax-example</module>
-		<module>xml-xom-example</module>
-		<module>xml-xstream-example</module>
-		<module>xml-jaxb-example</module>
-		<module>xml-sax-example</module>
-		<module>xml-xmlpull-example</module>
-		<module>xml-dom-example</module>
-		<module>xml-2-properties</module>
+		<module>json-jackson-example</module>
+		<module>json-gson-example</module>
+		<module>json-json-simple-example</module>
+		<module>json-fastjson-example</module>
 	</modules>
 </project>

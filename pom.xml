@@ -76,6 +76,7 @@
 		<module>spring-mongodb-tutorial</module>
 		<module>spring-security-tutorial</module>
 		<module>xml-tutorials</module>
+		<module>json-tutorials</module>
 	</modules>
 
 	<properties>
