@@ -16,5 +16,17 @@
 		<module>hibernate-one2one-annotation-example</module>
 		<module>hibernate-one2many-xml-example</module>
 		<module>hibernate-one2many-annotation-example</module>
+		<module>hibernate-many2many-xml-example</module>
+		<module>hibernate-many2many-annotation-example</module>
+		<module>hibernate-self-one2many-annotation-example</module>
+		<module>hibernate-self-many2many-annotation-example</module>
+		<module>hibernate-inheritance-table-per-heirarchy-xml-example</module>
+		<module>hibernate-inheritance-table-per-heirarchy-annotation-example</module>
+		<module>hibernate-inheritance-table-per-subclass-xml-example</module>
+		<module>hibernate-inheritance-table-per-subclass-annotation-example</module>
+		<module>
+			hibernate-inheritance-table-per-concrete-class-xml-example
+		</module>
+		<module>hibernate-inheritance-table-per-concrete-class-annotation-example</module>
 	</modules>
 </project>

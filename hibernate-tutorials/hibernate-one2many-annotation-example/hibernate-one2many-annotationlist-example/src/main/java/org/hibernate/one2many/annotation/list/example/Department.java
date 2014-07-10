@@ -1,12 +1,12 @@
 package org.hibernate.one2many.annotation.list.example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,19 +17,19 @@ import org.hibernate.annotations.IndexColumn;
 @Entity
 @Table(name="DEPARTMENT")
 public class Department {
- 
-    @Id
-    @GeneratedValue
-    @Column(name="DEPARTMENT_ID")
-    private Long departmentId;
-     
-    @Column(name="DEPT_NAME")
-    private String departmentName;
-     
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="department_id")
-    @IndexColumn(name="idx")
-    private List<Employee> employees = new ArrayList<Employee>();
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="department_id")
+	private Long departmentId;
+	
+	@Column(name="dept_name")
+	private String departmentName;
+	
+	@OneToMany(cascade={CascadeType.ALL})
+	@JoinColumn(name="department_id")
+	@IndexColumn(name="idx")
+	private List<Employee> employees;
 
 	public Long getDepartmentId() {
 		return departmentId;
@@ -54,7 +54,4 @@ public class Department {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
-    
-    
-    
 }
