@@ -4,3 +4,6 @@
 [submodule "servlet3-showcase"]
 	path = servlet3-showcase
 	url = https://github.com/zhangkaitao/servlet3-showcase.git
+[submodule "spring4-showcase"]
+	path = spring4-showcase
+	url = https://github.com/zhangkaitao/spring4-showcase.git
