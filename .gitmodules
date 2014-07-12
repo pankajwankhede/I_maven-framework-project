@@ -7,3 +7,6 @@
 [submodule "spring4-showcase"]
 	path = spring4-showcase
 	url = https://github.com/zhangkaitao/spring4-showcase.git
+[submodule "spring-tutorials"]
+	path = spring-tutorials
+	url = https://github.com/eugenp/tutorials.git
