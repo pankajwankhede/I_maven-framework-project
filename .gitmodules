@@ -16,3 +16,6 @@
 [submodule "spring-demo-apps"]
 	path = spring-demo-apps
 	url = https://github.com/sivaprasadreddy/spring-samples.git
+[submodule "simple-shiro-web-app"]
+	path = simple-shiro-web-app
+	url = https://github.com/pires/simple-shiro-web-app.git
