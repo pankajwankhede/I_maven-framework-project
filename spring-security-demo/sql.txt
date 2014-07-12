@@ -1,0 +1,66 @@
+
+
+CREATE TABLE report_user(
+username VARCHAR(255) NOT NULL PRIMARY KEY,
+password VARCHAR(255) NOT NULL,
+activity_id VARCHAR(255),
+descn VARCHAR(255),
+FOREIGN KEY(activity_id) REFERENCES activity(id)
+);
+
+CREATE TABLE report_role(
+rolename VARCHAR(255) NOT NULL PRIMARY KEY,
+descn VARCHAR(255)
+);
+
+CREATE TABLE report_user_role(
+username VARCHAR(255) NOT NULL REFERENCES report_user(username),
+rolename VARCHAR(255) NOT NULL REFERENCES report_role(rolename),
+PRIMARY KEY(username, rolename)
+);
+
+CREATE TABLE report_authorities(
+authority VARCHAR(255) NOT NULL PRIMARY KEY,
+descn VARCHAR(255)
+);
+
+CREATE TABLE report_role_authorities(
+rolename  VARCHAR(255) NOT NULL REFERENCES report_role(rolename),
+authority VARCHAR(255) NOT NULL REFERENCES report_authorities(authority),
+PRIMARY KEY(rolename, authority)
+);
+
+#权限定义
+INSERT INTO report_authorities VALUES('report_detail','查看明细报表权限');
+INSERT INTO report_authorities VALUES('report_token','查看验证码使用情况权限');
+INSERT INTO report_authorities VALUES('report_total','查看总计报表权限');
+
+#角色定义
+INSERT INTO report_role VALUES('role_admin','拥有查看报表的所有权限');
+INSERT INTO report_role VALUES('role_detail','只能够查看明细报表');
+INSERT INTO report_role VALUES('role_token','只能够查看验证码使用情况');
+INSERT INTO report_role VALUES('role_tatal','只能够查看总计报表');
+
+#给角色赋予相应的权限
+INSERT INTO report_role_authorities VALUES('role_admin','report_detail');
+INSERT INTO report_role_authorities VALUES('role_admin','report_token');
+INSERT INTO report_role_authorities VALUES('role_admin','report_total');
+INSERT INTO report_role_authorities VALUES('role_detail','report_detail');
+INSERT INTO report_role_authorities VALUES('role_token','report_token');
+INSERT INTO report_role_authorities VALUES('role_tatal','report_total');
+
+#定义用户
+INSERT INTO report_user VALUES('coast','coast','01','海岸城报表查看用户');
+INSERT INTO report_user VALUES('coast_total','coast__total','01','海岸城报表查看用户(只能够查看总计报表)');
+INSERT INTO report_user VALUES('chengdu','chengdu','02','成都八月活动报表查看用户');
+
+#给用户赋予相应的角色
+INSERT INTO report_user_role VALUES('coast','role_admin');
+INSERT INTO report_user_role VALUES('coast_total','role_detail');
+INSERT INTO report_user_role VALUES('chengdu','role_admin');
+
+
+
+
+
+

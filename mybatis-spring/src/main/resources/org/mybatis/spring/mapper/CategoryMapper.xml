@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.spring.mapper.CategoryMapper">
+	<cache></cache>
+	
+	<!-- 定义categoryResultMap -->
+	<resultMap type="Category" id="categoryResultMap">
+		<result column="id" property="id" javaType="int"/>
+		<result column="name" property="name" javaType="string"/>
+		<!-- 关联查询 关联org.mybatis.spring.mapper.ProductMapper.listProductByCategoryid 根据categoryid查询商品 -->
+		<!-- 注意:collection中此处的column="id"为category表中的主键 -->
+		<collection property="products" javaType="ArrayList" ofType="Product" column="id" select="org.mybatis.spring.mapper.ProductMapper.listProductByCategoryid">
+		</collection>
+	</resultMap>
+	
+	
+	<select id="findCategoryById" parameterType="int" resultType="Category">
+		<![CDATA[
+			SELECT * FROM category where id = #{id}
+		]]>
+	</select>
+	
+	
+	
+	<select id="selectCategoryById" parameterType="int" resultMap="categoryResultMap">
+		<![CDATA[
+			SELECT * FROM category where id = #{id}
+		]]>
+	</select>
+	
+	
+	
+	
+</mapper>

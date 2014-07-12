@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="使用xdoclet映射hibernate" basedir=".">
+	<!-- 定义源文件目录变量 -->
+	<property name="src.dir" value="${basedir}/src" />
+	<!-- 定义xdoclet的目录 -->
+	<property name="xdoclet.home" value="E:/JAR/xdoclet/xdoclet-1.2.3"></property>
+	<!-- 定义构建路径 -->
+	<path id="xdoclet.classpath">
+		<fileset dir="${xdoclet.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="lib.classpath">
+		<pathelement path="${java.class.path}" />
+		<fileset dir="${xdoclet.home}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${basedir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<!-- 生成Hibernate的映射文件 -->
+	<target name="生成Hibernate的映射文件" unless="hibernatedoclet.unnecessary"
+		description="Generate Hibernate mapping files">
+		<taskdef name="hibernatedoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask"
+			classpathref="xdoclet.classpath" />
+		<hibernatedoclet destdir="${src.dir}" mergedir="${src.dir}"
+			excludedtags="@version,@author,@todo,@see" verbose="false">
+			<fileset dir="${src.dir}">
+				<include name="com/xdoclet/model/*.java" />
+			</fileset>
+			<hibernate version="3.0" />
+		</hibernatedoclet>
+	</target>
+	<!-- 生成Hibernate配置文件 -->
+	<target name="生成Hibernate配置文件" depends="生成Hibernate的映射文件">
+		<taskdef name="hibernatedoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask"
+			classpathref="xdoclet.classpath" />
+		<hibernatedoclet destdir="${src.dir}">
+			<fileset dir="${src.dir}">
+				<include name="com/xdoclet/model/*.java" />
+			</fileset>
+			<hibernatecfg destDir="${src.dir}" version="3.0"
+				hbm2ddl="create-update" jdbcUrl="jdbc:mysql://localhost:3306/xdoclet"
+				driver="com.mysql.jdbc.Driver" userName="root" password="root"
+				dialect="org.hibernate.dialect.MySQL5Dialect" showSql="true">
+				<otherProperty name="hbm2ddl" value="create-update" />
+				<otherProperty name="format_sql" value="true" />
+			</hibernatecfg>
+		</hibernatedoclet>
+	</target>
+	<!-- 导出数据库表结构 -->
+	<target name="导出数据库表结构" depends="生成Hibernate配置文件">
+		<taskdef name="schemaexport" classname="org.hibernate.tool.hbm2ddl.SchemaExportTask"
+			 classpathref="lib.classpath"/>
+			 
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+        <property name="hibernate.format_sql" value="true"/>
+        <property name="hibernate.use_sql_comments true" value="true"/>
+
+		<schemaexport 
+			output="schema-export.sql"
+			quiet="no"
+            text="yes"
+            drop="no"
+            delimiter=";"
+			>
+			<fileset dir="${basedir}/src">
+				<include name="com/xdoclet/model/*.hbm.xml" />
+			</fileset>
+		</schemaexport>
+	</target>
+	
+</project>
+
+	

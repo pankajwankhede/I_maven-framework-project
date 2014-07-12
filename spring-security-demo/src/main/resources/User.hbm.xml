@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+
+
+<hibernate-mapping package="com.wss.lsl.spring.demo.entity">
+	<class name="User" table="user">
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="native" />
+		</id>
+		<property name="username" column="username" type="java.lang.String" />
+		<property name="password" column="password" type="java.lang.String" />
+		<property name="enabled" column="enabled" type="java.lang.Boolean" />
+		
+		<bag name="authorities">
+			<key column="userid" />
+			<one-to-many class="Authority"/>
+		</bag>
+	</class>
+
+</hibernate-mapping>  

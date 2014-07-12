@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security 
+                        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+    
+		<http auto-config="true">
+			<intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+			<intercept-url pattern="/admin.jsp" access="ROLE_ADMIN"/>
+			<intercept-url pattern="/**" access="ROLE_USER"/>
+		</http>
+		
+		<authentication-manager>
+			<authentication-provider>
+				<jdbc-user-service data-source-ref="dataSource" users-by-username-query="select username, password, status as enabled from user where username=?"
+				  authorities-by-username-query="select u.username, r.name as authoritiy from user u, role r ,user_role ur where u.username=? and u.id=ur.user_id  and r.id=ur.role_id " />
+			</authentication-provider>
+		</authentication-manager>
+		
+		<beans:bean id="dataSource" 
+					class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<beans:property name="url" value="jdbc:mysql://localhost:3306/test2"/>	
+			<beans:property name="username" value="root" />
+			<beans:property name="password" value=""/>		
+		</beans:bean>
+		
+		<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+			<beans:property name="dataSource">
+				<beans:ref bean="dataSource"/>
+			</beans:property>
+			<beans:property name="hibernateProperties">
+				<beans:props>
+					<beans:prop key="hibernate.dialect">
+						org.hibernate.dialect.MySQLDialect
+					</beans:prop>
+					<beans:prop key="hibernate.show_sql">
+						true
+					</beans:prop>
+				</beans:props>
+			</beans:property>
+			<beans:property name="mappingResources">
+				<beans:list>
+					<beans:value>User.hbm.xml</beans:value>
+					<beans:value>Role.hbm.xml</beans:value>
+					<beans:value>Authority.hbm.xml</beans:value>
+				</beans:list>
+			</beans:property>
+		</beans:bean>
+		
+</beans:beans>
