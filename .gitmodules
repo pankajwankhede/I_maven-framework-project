@@ -19,3 +19,6 @@
 [submodule "simple-shiro-web-app"]
 	path = simple-shiro-web-app
 	url = https://github.com/pires/simple-shiro-web-app.git
+[submodule "apache-shiro-tutorial-webapp"]
+	path = apache-shiro-tutorial-webapp
+	url = https://github.com/lhazlewood/apache-shiro-tutorial-webapp.git
