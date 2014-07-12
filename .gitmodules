@@ -1,0 +1,3 @@
+[submodule "shiro-example"]
+	path = shiro-example
+	url = https://github.com/zhangkaitao/shiro-example.git
