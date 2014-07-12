@@ -1,3 +1,6 @@
 [submodule "shiro-example"]
 	path = shiro-example
 	url = https://github.com/zhangkaitao/shiro-example.git
+[submodule "servlet3-showcase"]
+	path = servlet3-showcase
+	url = https://github.com/zhangkaitao/servlet3-showcase.git
