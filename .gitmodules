@@ -10,3 +10,6 @@
 [submodule "spring-tutorials"]
 	path = spring-tutorials
 	url = https://github.com/eugenp/tutorials.git
+[submodule "java-persistence-with-mybatis3"]
+	path = java-persistence-with-mybatis3
+	url = https://github.com/sivaprasadreddy/Java-Persistence-with-MyBatis3.git
