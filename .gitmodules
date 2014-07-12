@@ -13,3 +13,6 @@
 [submodule "java-persistence-with-mybatis3"]
 	path = java-persistence-with-mybatis3
 	url = https://github.com/sivaprasadreddy/Java-Persistence-with-MyBatis3.git
+[submodule "spring-demo-apps"]
+	path = spring-demo-apps
+	url = https://github.com/sivaprasadreddy/spring-samples.git
