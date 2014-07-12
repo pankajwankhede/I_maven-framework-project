@@ -22,3 +22,6 @@
 [submodule "apache-shiro-tutorial-webapp"]
 	path = apache-shiro-tutorial-webapp
 	url = https://github.com/lhazlewood/apache-shiro-tutorial-webapp.git
+[submodule "spring-data-jpa-examples"]
+	path = spring-data-jpa-examples
+	url = https://github.com/pkainulainen/spring-data-jpa-examples.git
