@@ -8,12 +8,40 @@
 	</parent>
 	<artifactId>flex-todolist-example</artifactId>
 	<packaging>pom</packaging>
+	
 	<modules>
 		<module>flex-todolist-ria-example</module>
     	<module>flex-todolist-web-example</module>
     	<module>flex-todolist-config-example</module>
 	</modules>
-
+	
+	<repositories>
+		<repository>
+			<id>sonatype-repository</id>
+			<url>http://repository.sonatype.org/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype-repository</id>
+			<url>http://repository.sonatype.org/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	
 	<build>
         <pluginManagement>
             <plugins>
