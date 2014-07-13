@@ -14,6 +14,20 @@
 		<system>Github</system>
 		<url>https://github.com/v5developer/maven-framework-project/issues</url>
 	</issueManagement>
+	
+	<!-- 开发人员信息 -->
+	<developers>
+		<developer>
+			<id>fengjing</id>
+			<name>fengjing</name>
+			<email>sxyx2008@gmail.com</email>
+			<organization>v5developer</organization>
+			<roles>
+				<role>softwareengineer</role>
+			</roles>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
@@ -343,7 +357,7 @@
 							<version>2.14.1</version>
 						</plugin>
 
-						<!-- 项目源代码分析报�?-->
+						<!-- 项目源代码分析报告 -->
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-pmd-plugin</artifactId>
@@ -382,7 +396,7 @@
 							<version>2.3</version>
 						</plugin>
 
-						<!-- 用于在站点中生成测试覆盖率报�?-->
+						<!-- 用于在站点中生成测试覆盖率报告 -->
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>cobertura-maven-plugin</artifactId>
@@ -402,7 +416,7 @@
 								<downloadSources>true</downloadSources>
 								<downloadJavadocs>false</downloadJavadocs>
 								<wtpversion>2.0</wtpversion>
-								<!-- 增加设置项目encoding -->
+								<!-- 增加设置项目encoding的文件 -->
 								<additionalConfig>
 									<file>
 										<name>.settings/org.eclipse.core.resources.prefs</name>
