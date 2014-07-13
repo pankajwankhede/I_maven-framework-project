@@ -1,4 +1,4 @@
-# Hibernate Search by Example
+Hibernate Search by Example
 
 Chapter 1: Code present
 
