@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.aimeizi</groupId>
 	<artifactId>maven-framework-project</artifactId>
@@ -14,7 +15,7 @@
 		<system>Github</system>
 		<url>https://github.com/v5developer/maven-framework-project/issues</url>
 	</issueManagement>
-	
+
 	<!-- 开发人员信息 -->
 	<developers>
 		<developer>
@@ -92,7 +93,8 @@
 		<module>json-tutorials</module>
 		<module>hibernate-tutorials</module>
 		<module>commons-dbutils-tutorial</module>
-  </modules>
+		<module>spring-jdbc-tutorials</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
@@ -148,7 +150,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		
+
 		<repository>
 			<id>sonatype-repository</id>
 			<url>http://repository.sonatype.org/content/groups/public</url>
@@ -159,7 +161,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		
+
 		<repository>
 			<id>jboss</id>
 			<name>jboss private nexus</name>
@@ -199,7 +201,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-		
+
 		<pluginRepository>
 			<id>sonatype-repository</id>
 			<url>http://repository.sonatype.org/content/groups/public</url>
@@ -210,7 +212,7 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
-		
+
 	</pluginRepositories>
 
 
@@ -244,7 +246,6 @@
 			<!-- mvn clean package -->
 			<!-- jboss:start -->
 			<!-- mvn jboss:hard-deploy -->
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jboss-maven-plugin</artifactId>
@@ -468,7 +469,6 @@
 			</plugin>
 
 		</plugins>
-
 
 	</build>
 

@@ -1,0 +1,204 @@
+package org.spring.jdbc.tutorials;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.spring.jdbc.tutorials.dao.impl.JdbcCustomerDAO;
+import org.spring.jdbc.tutorials.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@ContextConfiguration(locations={"classpath:applicationContext.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+public class JdbcCustomerDAOTest {
+	
+	@Autowired
+	JdbcCustomerDAO jdbcCustomerDAO;
+	
+	/**
+	 * List<Map<String, Object>>
+	 */
+	@Test
+	public void findAll() {
+		List<Customer> list = jdbcCustomerDAO.findAll();
+		System.out.println(list);
+	}
+	
+	/**
+	 * BeanPropertyRowMapper
+	 */
+	@Test
+	public void findAllUseBeanPropertyRowMapper() {
+		List<Customer> list = jdbcCustomerDAO.findAllUseBeanPropertyRowMapper();
+		System.out.println(list);
+	}
+	
+	@Test
+	public void insertBatch() {
+		
+		Customer customer1 = new Customer("mkyong1",21);
+        Customer customer3 = new Customer("mkyong2",22);
+        Customer customer2 = new Customer("mkyong3",23);
+        
+        List<Customer>customers = new ArrayList<Customer>();
+        customers.add(customer1);
+        customers.add(customer2);
+        customers.add(customer3);
+ 
+        jdbcCustomerDAO.insertBatch(customers);
+        
+        String sql = "UPDATE CUSTOMER SET NAME ='BATCHUPDATE'";
+        
+        jdbcCustomerDAO.insertBatchSQL(sql);
+        
+	}
+	
+	
+	@Test
+	public void insertBatchUseBatchPreparedStatementSetter() {
+		
+		Customer customer1 = new Customer("mkyong1",21);
+        Customer customer3 = new Customer("mkyong2",22);
+        Customer customer2 = new Customer("mkyong3",23);
+ 
+        List<Customer>customers = new ArrayList<Customer>();
+        customers.add(customer1);
+        customers.add(customer2);
+        customers.add(customer3);
+ 
+        jdbcCustomerDAO.insertBatchUseBatchPreparedStatementSetter(customers);
+ 
+        String sql = "UPDATE CUSTOMER SET NAME ='BATCHUPDATE'";
+        jdbcCustomerDAO.insertBatchSQL(sql);
+        
+	}
+	
+	
+	@Test
+	public void insertBatchUseSqlParameterSource() {
+		
+		Customer customer1 = new Customer("mkyong1",21);
+        Customer customer3 = new Customer("mkyong2",22);
+        Customer customer2 = new Customer("mkyong3",23);
+ 
+        List<Customer>customers = new ArrayList<Customer>();
+        customers.add(customer1);
+        customers.add(customer2);
+        customers.add(customer3);
+ 
+        jdbcCustomerDAO.insertBatchUseSqlParameterSource(customers);
+ 
+        String sql = "UPDATE CUSTOMER SET NAME ='BATCHUPDATE'";
+        jdbcCustomerDAO.insertBatchSQL(sql);
+        
+	}
+	
+	
+	
+	@Test
+	public void insertBatchUseSqlParameterSourceUtils() {
+		
+		Customer customer1 = new Customer("mkyong1",21);
+        Customer customer3 = new Customer("mkyong2",22);
+        Customer customer2 = new Customer("mkyong3",23);
+ 
+        List<Customer>customers = new ArrayList<Customer>();
+        customers.add(customer1);
+        customers.add(customer2);
+        customers.add(customer3);
+ 
+        jdbcCustomerDAO.insertBatchUseSqlParameterSourceUtils(customers);
+ 
+        String sql = "UPDATE CUSTOMER SET NAME ='BATCHUPDATE'";
+        jdbcCustomerDAO.insertBatchSQL(sql);
+        
+	}
+	
+	
+	@Test
+	public void findCustomerIdUseCustomerRowMapper(){
+		Customer customer = jdbcCustomerDAO.findCustomerIdUseCustomerRowMapper(1);
+		System.out.println(customer);
+	}
+	
+	@Test
+	public void findCustomerIdUseBeanPropertyRowMapper(){
+		Customer customer = jdbcCustomerDAO.findCustomerIdUseBeanPropertyRowMapper(1);
+		System.out.println(customer);
+	}
+	
+	
+	@Test
+	public void findCustomerNameById(){
+		String name = jdbcCustomerDAO.findCustomerNameById(1);
+		System.out.println(name);
+	}
+	
+	@Test
+	public void useSimpleJdbcInsert(){
+		jdbcCustomerDAO.useSimpleJdbcInsert();
+		System.out.println(jdbcCustomerDAO.findAll());
+	}
+	
+	@Test
+	public void findTotalCustomer(){
+		int totalCustomer = jdbcCustomerDAO.findTotalCustomer();
+		System.out.println(totalCustomer);
+	}
+	
+	@Test
+	public void getCustomerUseMapSqlParameterSource(){
+		int count = jdbcCustomerDAO.getCustomerUseMapSqlParameterSource(22);
+		System.out.println(count);
+	}
+	
+	@Test
+	public void findCustomerNameAndAge(){
+		List<Customer> nameAndAge = jdbcCustomerDAO.findCustomerNameAndAge();
+		System.out.println(nameAndAge);
+	}
+	
+	@Test
+	public void useBeanPropertySqlParameterSource(){
+		Customer customer = new Customer("BeanPropertySqlParameterSource", 28);
+		jdbcCustomerDAO.useBeanPropertySqlParameterSource(customer);
+	}
+	
+	@Test
+	public void useMapSqlParameterSource(){
+		Customer customer = new Customer("MapSqlParameterSource", 28);
+		jdbcCustomerDAO.useMapSqlParameterSource(customer);
+	}
+	
+	@Test
+	public void getAutoGeneratedID(){
+		Customer customer = new Customer("getAutoGeneratedID", 28);
+		System.out.println(jdbcCustomerDAO.getAutoGeneratedID(customer));
+	}
+	
+	@Test
+	public void executeProcedure(){
+		System.out.println(jdbcCustomerDAO.executeProcedure(1));
+	}
+	
+	@Test
+	public void executeFunction(){
+		System.out.println(jdbcCustomerDAO.executeFunction(1));
+	}
+	
+	@Test
+	public void useMappingSqlQuery(){
+		System.out.println(jdbcCustomerDAO.useMappingSqlQuery(1));
+	}
+	
+	@Test
+	public void useSqlUpdate(){
+		System.out.println(jdbcCustomerDAO.useSqlUpdate(1,"useSqlUpdate"));
+	}
+	
+	
+	
+}
