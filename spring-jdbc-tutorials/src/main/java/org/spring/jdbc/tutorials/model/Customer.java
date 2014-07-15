@@ -1,10 +1,15 @@
 package org.spring.jdbc.tutorials.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
 	
 	private int custId;
 	private String name;
 	private int age;
+	
+	private Set<Address> addresses = new HashSet<Address>();
 	
 	public Customer() {
 	}
@@ -40,11 +45,25 @@ public class Customer {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
+	
+	public void addAddress(Address address) {
+		this.addresses.add(address);
+	}
 
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", name=" + name + ", age=" + age
-				+ "]";
+				+ ", addresses=" + addresses + "]";
 	}
+
+	
 	
 }

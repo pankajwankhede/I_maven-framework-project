@@ -199,6 +199,39 @@ public class JdbcCustomerDAOTest {
 		System.out.println(jdbcCustomerDAO.useSqlUpdate(1,"useSqlUpdate"));
 	}
 	
+	@Test
+	public void getResultSetCursorUseSimpleJdbcCall(){
+		System.out.println(jdbcCustomerDAO.getResultSetCursorUseSimpleJdbcCall());
+	}
+	
+	@Test
+	public void useOneToManyResultSetExtractor(){
+		System.out.println(jdbcCustomerDAO.useOneToManyResultSetExtractor());
+	}
+	
+	@Test
+	public void useQueryDslQueryAll(){
+		System.out.println(jdbcCustomerDAO.useQueryDslQueryAll());
+	}
+	
+	@Test
+	public void useQueryDslInsert(){
+		Customer customer = new Customer("useQueryDslInsert",23);
+		System.out.println(jdbcCustomerDAO.useQueryDslInsert(customer));
+	}
+	
+	@Test
+	public void useQueryDslUpdate(){
+		Customer customer = new Customer(1,"useQueryDslUpdate",23);
+		System.out.println(jdbcCustomerDAO.useQueryDslUpdate(customer));
+	}
+	
+	@Test
+	public void useQueryDslDelete(){
+		Customer customer = new Customer(10,"useQueryDslInsert",23);
+		System.out.println(jdbcCustomerDAO.useQueryDslDelete(customer));
+	}
+	
 	
 	
 }

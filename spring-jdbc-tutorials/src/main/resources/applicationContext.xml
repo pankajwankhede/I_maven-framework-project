@@ -22,9 +22,13 @@
 	http://www.springframework.org/schema/task 
 	http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 	
-	<jdbc:embedded-database id="dataSource">
+	<jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS" enabled="false">
         <jdbc:script location="classpath:jdbc.sql"/>
-    </jdbc:embedded-database>
+    </jdbc:initialize-database>
+	
+	<bean id="queryDslJdbcTemplate" class="org.springframework.data.jdbc.query.QueryDslJdbcTemplate">
+		<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+	</bean>
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg name="dataSource" ref="dataSource"/>
@@ -63,6 +67,7 @@
 	<bean id="JdbcCustomerDAO" class="org.spring.jdbc.tutorials.dao.impl.JdbcCustomerDAO">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 		<property name="simpleJdbcCall" ref="simpleJdbcCall" />
+		<property name="queryDslJdbcTemplate" ref="queryDslJdbcTemplate"/>
 		<property name="namedParameterJdbcTemplate" ref="namedParameterJdbcTemplate"/>
 		<property name="simpleJdbcInsert" ref="simpleJdbcInsert"/>
 		<property name="customerMappingSqlQuery" ref="customerMappingSqlQuery"/>

@@ -2,6 +2,7 @@ package org.spring.jdbc.tutorials.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,24 +13,46 @@ import org.spring.jdbc.tutorials.CustomerMappingSqlQuery;
 import org.spring.jdbc.tutorials.CustomerRowMapper;
 import org.spring.jdbc.tutorials.CustomerSqlUpdate;
 import org.spring.jdbc.tutorials.dao.CustomerDAO;
+import org.spring.jdbc.tutorials.model.Address;
 import org.spring.jdbc.tutorials.model.Customer;
+import org.spring.jdbc.tutorials.model.QAddress;
+import org.spring.jdbc.tutorials.model.QCustomer;
+import org.springframework.data.jdbc.core.OneToManyResultSetExtractor;
+import org.springframework.data.jdbc.query.QueryDslJdbcTemplate;
+import org.springframework.data.jdbc.query.SqlDeleteCallback;
+import org.springframework.data.jdbc.query.SqlInsertWithKeyCallback;
+import org.springframework.data.jdbc.query.SqlUpdateCallback;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import com.mysema.query.sql.SQLQuery;
+import com.mysema.query.sql.dml.SQLDeleteClause;
+import com.mysema.query.sql.dml.SQLInsertClause;
+import com.mysema.query.sql.dml.SQLUpdateClause;
+import com.mysema.query.types.Path;
+
 @SuppressWarnings("deprecation")
 public class JdbcCustomerDAO implements CustomerDAO {
 
+	/**
+	 * QueryDslJdbcTemplate
+	 */
+	private QueryDslJdbcTemplate queryDslJdbcTemplate;
+	
+	
 	/**
 	 * JdbcTemplate
 	 */
@@ -62,6 +85,186 @@ public class JdbcCustomerDAO implements CustomerDAO {
 	 * SqlUpdate
 	 */
 	private CustomerSqlUpdate customerSqlUpdate; 
+	
+	
+	
+	/**
+	 * 使用OneToManyResultSetExtractor 一对多查询
+	 * @return
+	 */
+	public List<Customer> useOneToManyResultSetExtractor(){
+		String sql = "SELECT customer.cust_id, customer.name, customer.age, address.id," +  
+					" address.cust_id, address.street, address.city " +
+					" FROM customer " + 
+					" LEFT JOIN address ON customer.cust_id = address.cust_id " + 
+					" ORDER BY customer.cust_id" ;
+		
+		List<Customer> list = jdbcTemplate.query(sql, new OneToManyResultSetExtractor<Customer,Address,Integer>(new CustomerMapper(),new AddressMapper()){
+
+			protected Integer mapPrimaryKey(ResultSet rs) throws SQLException {
+				return rs.getInt("customer.cust_id");
+			}
+
+			protected Integer mapForeignKey(ResultSet rs) throws SQLException {
+				if(rs.getObject("address.cust_id") == null){
+					return null;
+				}else{
+					return rs.getInt("address.cust_id");
+				}
+			}
+
+			protected void addChild(Customer root, Address child) {
+				root.addAddress(child);
+			}
+			
+		});
+		return list;
+	}
+	
+	
+	
+	/**
+	 * 该内部类主要用来处理OneToManyResultSetExtractor
+	 * @author welcome
+	 *
+	 */
+	class CustomerMapper implements RowMapper<Customer> {
+
+		@Override
+		public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Customer customer = new Customer();
+			customer.setCustId(rs.getInt("customer.cust_id"));
+			customer.setName(rs.getString("customer.name"));
+			customer.setAge(rs.getInt("customer.age"));
+			return customer;
+		}
+		
+	}
+	
+	/**
+	 * 该内部类主要用来处理OneToManyResultSetExtractor
+	 * @author welcome
+	 *
+	 */
+	class AddressMapper implements RowMapper<Address> {
+
+		@Override
+		public Address mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Address address = new Address();
+			address.setId(rs.getInt("address.id"));
+			address.setStreet(rs.getString("address.street"));
+			address.setCity(rs.getString("address.city"));
+			return address;
+		}
+		
+	}
+	
+	
+	/**
+	 * 使用QueryDslJdbcTemplate查询
+	 * @return
+	 */
+	public List<Customer> useQueryDslQueryAll(){
+		
+		final QCustomer qCustomer = new QCustomer("customer");
+		final QAddress qAddress = new QAddress("address");
+		
+		SQLQuery sqlQuery = queryDslJdbcTemplate.newSqlQuery().from(qCustomer).leftJoin(qCustomer._addressCustomerRef,qAddress);
+		
+		List<Customer> list = queryDslJdbcTemplate.queryForObject(sqlQuery, new OneToManyResultSetExtractor<Customer,Address,Integer>(new CustomerMapper(),new AddressMapper()) {
+			
+			@Override
+			protected Integer mapPrimaryKey(ResultSet rs) throws SQLException {
+				return rs.getInt(qCustomer.custId.toString());
+			}
+
+			@Override
+			protected Integer mapForeignKey(ResultSet rs) throws SQLException {
+				String columnname = qAddress.addressCustomerRef.getLocalColumns().get(0).toString();
+				if(rs.getObject(columnname) == null){
+					return null;
+				}else{
+					return rs.getInt(columnname);
+				}
+			}
+
+			@Override
+			protected void addChild(Customer root, Address child) {
+				root.addAddress(child);
+			}
+
+			
+		}, new Path[]{qCustomer.custId,qCustomer.name,qCustomer.age,qAddress.id,qAddress.custId,qAddress.street,qAddress.city});
+		
+		return list;
+	}
+	
+	
+	/**
+	 * 使用QueryDsl新增
+	 */
+	public int useQueryDslInsert(final Customer customer){
+		
+		final QCustomer qCustomer = new QCustomer("customer");
+		
+		int returnVal = queryDslJdbcTemplate.insertWithKey(qCustomer, new SqlInsertWithKeyCallback<Integer>() {
+
+			@Override
+			public Integer doInSqlInsertWithKeyClause(SQLInsertClause insert)
+					throws SQLException {
+				return insert.columns(qCustomer.name,qCustomer.age).values(customer.getName(),customer.getAge()).executeWithKey(qCustomer.custId);
+			}
+		});
+		
+		return returnVal;
+		
+	}
+	
+	
+	/**
+	 * 使用QueryDsl修改
+	 */
+	public long useQueryDslUpdate(final Customer customer){
+		
+		final QCustomer qCustomer = new QCustomer("customer");
+		
+		long returnVal = queryDslJdbcTemplate.update(qCustomer, new SqlUpdateCallback() {
+			
+			@Override
+			public long doInSqlUpdateClause(SQLUpdateClause update) {
+				return update.
+						where(qCustomer.custId.eq(customer.getCustId())).
+						set(qCustomer.name, customer.getName()).
+						set(qCustomer.age, customer.getAge()).
+						execute();
+			}
+		});
+		
+		return returnVal;
+		
+	}
+	
+	
+	/**
+	 * 使用QueryDsl删除
+	 */
+	public long useQueryDslDelete(final Customer customer){
+		
+		final QCustomer qCustomer = new QCustomer("customer");
+		
+		long returnVal = queryDslJdbcTemplate.delete(qCustomer, new SqlDeleteCallback() {
+			
+			@Override
+			public long doInSqlDeleteClause(SQLDeleteClause delete) {
+				return delete.where(qCustomer.custId.eq(customer.getCustId())).execute();
+			}
+		});
+		
+		return returnVal;
+		
+	}
+	
+	
 	
 	/**
 	 * 调用存储过程
@@ -109,6 +312,31 @@ public class JdbcCustomerDAO implements CustomerDAO {
     	String name = simpleJdbcCall.withFunctionName("get_customer_name").executeFunction(String.class, in);
         return name;
 	}
+	
+	
+	
+	/**
+	 * Returning ResultSet/REF Cursor from a SimpleJdbcCall
+	 * 
+	 * DELIMITER //
+	 * CREATE PROCEDURE read_all_customers()
+	 * BEGIN
+	 * SELECT a.CUST_ID, a.NAME, a.AGE FROM customer a;
+	 * END//
+	 * 
+	 * 使用simpleJdbcCall调用read_all_customers存储过程返回一个ResultSet Cursor
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Customer> getResultSetCursorUseSimpleJdbcCall(){
+		Map<String, Object> map = simpleJdbcCall.withProcedureName("read_all_customers").
+				returningResultSet("customers", ParameterizedBeanPropertyRowMapper.
+						newInstance(Customer.class)).
+				execute(new HashMap<String, Object>(0));
+		return (List<Customer>) map.get("customers");
+	}
+	
+	
 	
 	/**
 	 * 使用MappingSqlQuery方式查询
@@ -491,6 +719,14 @@ public class JdbcCustomerDAO implements CustomerDAO {
 
 	public void setSimpleJdbcInsert(SimpleJdbcInsert simpleJdbcInsert) {
 		this.simpleJdbcInsert = simpleJdbcInsert;
+	}
+
+	public QueryDslJdbcTemplate getQueryDslJdbcTemplate() {
+		return queryDslJdbcTemplate;
+	}
+
+	public void setQueryDslJdbcTemplate(QueryDslJdbcTemplate queryDslJdbcTemplate) {
+		this.queryDslJdbcTemplate = queryDslJdbcTemplate;
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
