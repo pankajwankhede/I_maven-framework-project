@@ -25,3 +25,20 @@
 [submodule "spring-data-jpa-examples"]
 	path = spring-data-jpa-examples
 	url = https://github.com/pkainulainen/spring-data-jpa-examples.git
+[submodule "spring-data-noxml"]
+	
+	path = spring-data-noxml
+	
+	url = https://github.com/Fruzenshtein/spr-data.git
+
+[submodule "springmvc-security-example"]
+	
+	path = springmvc-security-example
+	
+	url = https://github.com/Fruzenshtein/security-spr.git
+
+[submodule "springmvc-hibernate-example"]
+	
+	path = springmvc-hibernate-example
+	
+	url = https://github.com/Fruzenshtein/spr-mvc-hib.git
