@@ -96,6 +96,7 @@
 		<module>spring-jdbc-tutorials</module>
 		<module>spring-data-example</module>
 		<module>spring-ibatis-example</module>
+		<module>javase-tutorials</module>
 	</modules>
 
 	<properties>

@@ -43,7 +43,6 @@ public class ProductDaoImpl implements ProductDao {
 			Object object = getSqlMapClient().insert("org.spring.ibatis.example.model.Product.save", product);
 			return object==null?false:true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
