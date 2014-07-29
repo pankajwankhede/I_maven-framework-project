@@ -93,6 +93,7 @@
 		<module>json-tutorials</module>
 		<module>hibernate-tutorials</module>
 		<module>commons-dbutils-tutorial</module>
+		<module>spring-cache-example</module>
 		<module>spring-jdbc-tutorials</module>
 		<module>spring-data-example</module>
 		<module>spring-ibatis-example</module>
