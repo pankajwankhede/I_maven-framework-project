@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 排序算法接口
+ * @author 冯靖
+ *
  */
 public interface Sort {
 

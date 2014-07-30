@@ -6,7 +6,9 @@ import org.javase.tutorials.sort.Sort.SortUtil;
 import org.javase.tutorials.sort.Sort.Sorts;
 
 /**
- * 冒择入希快归堆：常用排序算法
+ * 常用排序算法
+ * @author 冯靖
+ *
  */
 public class SortTest {
 

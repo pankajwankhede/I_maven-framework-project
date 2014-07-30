@@ -1,0 +1,51 @@
+ZIP4J 是一个支持处理ZIP文件的开源库
+支持创建，修改，添加，删除，解压 压缩文件
+支持读/写密码保护
+支持AES加密 128/256
+支持标准ZIP加密
+支持进度监视器
+自持Unicode 文件名
+支持创建分卷压缩文件
+支持将文件添加到压缩包中但不进行压缩
+
+
+Create, Add, Extract, Update, Remove files from a Zip file
+针对ZIP压缩文件创建、添加、抽出、更新和移除文件
+Read/Write password protected Zip files
+(读写有密码保护的Zip文件)
+Supports AES 128/256 Encryption
+(支持AES 128/256算法加密)
+Supports Standard Zip Encryption
+(支持标准Zip算法加密)
+Supports Zip64 format
+(支持zip64格式)
+Supports Store (No Compression) and Deflate compression method
+(支持Store(非压缩)和Deflate压缩方法---不太明白)
+Create or extract files from Split Zip files (Ex: z01, z02,...zip)
+(针对分块zip文件创建和抽出文件)
+Supports Unicode file names
+(支持Unicode编码文件名)
+Progress Monitor
+(进度监控)
+
+压缩效率
+
+   ZIP4J提供5中压缩算法：
+
+    DEFLATE_LEVEL_FASTEST 
+    DEFLATE_LEVEL_FASTEST
+    DEFLATE_LEVEL_NORMAL
+    DEFLATE_LEVEL_MAXIMUM
+    DEFLATE_LEVEL_ULTRA
+   根据API提供的几种不同压缩级别进行测试（文件夹压缩），测试结果如下：
+
+   一个180M的文件夹压缩后
+
+   WinRAR 30秒 - 78.7 MB ； 
+   NORMAL - 18 秒 91.2 MB  ；
+   FAST 13秒 -93.1 MB；
+   FASTEST - 最快速10 秒94.7 MB 
+   MAXIMUM 23 秒 - 90.7 MB；
+   ULTRA -50 90.6 MB
+
+ZIP4J 项目地址为  ：http://www.lingala.net/zip4j/

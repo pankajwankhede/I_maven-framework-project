@@ -2,7 +2,7 @@ package org.javase.tutorials;
 
 /**
  * 交换两个数的值,不借助于第三个数
- * @author welcome
+ * @author 冯靖
  *
  */
 public class SwapVar {

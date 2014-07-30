@@ -3,7 +3,7 @@ package org.javase.tutorials;
 
 /**
  * 二分法查找
- * @author welcome
+ * @author 冯靖
  *
  */
 public class BinarySearch {
