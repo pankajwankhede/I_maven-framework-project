@@ -18,12 +18,33 @@
 
 这里不仅生产代码，还搬运代码。欢迎[fork](https://github.com/v5developer/maven-framework-project/fork)和[star](https://github.com/v5developer/maven-framework-project/stargazers)
 
+如果你有好的示例项目或教程可以与我联系。我会以`git submodule`的方式添加进来,一来是尊重原作者的劳动成功,二来实时与原作者库同步,保持最新。
 
 
 # 项目托管
 
 
-github:[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
+[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
+
+较早版本(已不再更新维护)
+
+[https://github.com/sxyx2008/maven-framework-project](https://github.com/sxyx2008/maven-framework-project)
+
+
+# 克隆到本地
+
+
+该项目,争取做到每一个示例项目都可以直接运行。各示例项目之间不相互依赖。由于提交了一些参考书籍[reference](https://github.com/v5developer/maven-framework-project/tree/master/reference)导致目前体积较大。因此克隆时间较长,请您耐心等待。
+
+项目使用了`git submodule`,因此克隆后需要执行下面的操作(在项目根目录中,与.gitmodules同一目录下)。
+
+```
+git submodule init
+
+git submodule update
+```
+
+具体用法参照[http://git-scm.com/book/zh/](http://git-scm.com/book/zh/)
 
 
 
