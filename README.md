@@ -18,7 +18,7 @@
 
 这里不仅生产代码，还搬运代码。欢迎*[fork](https://github.com/v5developer/maven-framework-project/fork)*和*[star](https://github.com/v5developer/maven-framework-project/stargazers)*
 
-如果你有好的示例项目或教程可以与我联系。我会以`git submodule`的方式添加进来，一来是尊重原作者的劳动成功，二来实时与原作者库同步，保持最新。
+如果你有好的示例项目或教程可与我联系。我会以`git submodule`的方式添加进来，一来是尊重原作者的劳动成果，二来实时与原作者库同步，保持最新。
 
 
 # 项目托管
@@ -26,6 +26,7 @@
 
 *[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)*
 
+*[https://git.oschina.net/sxyx2008/maven-framework-project](https://git.oschina.net/sxyx2008/maven-framework-project)*
 
 *[https://github.com/sxyx2008/maven-framework-project](https://github.com/sxyx2008/maven-framework-project)* *较早版本(已不再更新维护)*
 
