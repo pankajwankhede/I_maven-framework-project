@@ -26,6 +26,160 @@
 github:[https://github.com/v5developer/maven-framework-project](https://github.com/v5developer/maven-framework-project)
 
 
+
+# 酷站分享
+
+
+该部分内容主要分享一些本人收集的与Java有关的站点。主要包括Maven Repository、Maven Plugins、Java Tutorials。欢迎补充!
+
+
+## Maven Repository
+
+[http://mvnrepository.com/](http://mvnrepository.com/)
+
+[http://search.maven.org/#browse](http://search.maven.org/#browse)
+
+[http://mojo.codehaus.org/](http://mojo.codehaus.org/)
+
+[http://dev.nightlabs.org/maven-repository/repo/](http://dev.nightlabs.org/maven-repository/repo/)
+
+[http://opensource.kantega.no/nexus/content/groups/public/](http://opensource.kantega.no/nexus/content/groups/public/)
+
+[http://nexus.betaconceptframework.org/nexus/content/groups/public/](http://nexus.betaconceptframework.org/nexus/content/groups/public/)
+
+[https://app.camunda.com/nexus/content/groups/public/](https://app.camunda.com/nexus/content/groups/public/)
+
+[http://repo1.maven.org/maven/mule/dependencies/maven2/](http://repo1.maven.org/maven/mule/dependencies/maven2/)
+
+[https://maven-us.nuxeo.org/nexus/content/groups/public/](https://maven-us.nuxeo.org/nexus/content/groups/public/)
+
+[http://repo.yongtai.com.cn/nexus/content/repositories/public/](http://repo.yongtai.com.cn/nexus/content/repositories/public/)
+
+[https://maven.alfresco.com/nexus/content/repositories/public/](https://maven.alfresco.com/nexus/content/repositories/public/)
+
+[https://repository.jboss.org/nexus/content/repositories/public/](https://repository.jboss.org/nexus/content/repositories/public/)
+
+[http://mirrors.ibiblio.org/maven/mule/dependencies/maven2/](http://mirrors.ibiblio.org/maven/mule/dependencies/maven2/)
+
+[http://repo.squashtest.org/maven2/releases/](http://repo.squashtest.org/maven2/releases/)
+
+[https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/](https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/)
+
+[http://repo.spring.io/milestone/](http://repo.spring.io/milestone/)
+
+[http://repo.spring.io/snapshot/](http://repo.spring.io/snapshot/)
+
+[https://oss.sonatype.org/content/repositories/sourceforge-releases/](https://oss.sonatype.org/content/repositories/sourceforge-releases/)
+
+[http://maven.in.softeu.cz/nexus/content/repositories/public/](http://maven.in.softeu.cz/nexus/content/repositories/public/)
+
+[http://maven.oschina.net/content/groups/public/](http://maven.oschina.net/content/groups/public/)
+
+[http://maven.kaifazhe.me/content/groups/public/](http://maven.kaifazhe.me/content/groups/public/)
+
+[http://repo.spring.io/release/](http://repo.spring.io/release/)
+
+[http://mirrors.ibiblio.org/maven2/](http://mirrors.ibiblio.org/maven2/)
+
+
+*欢迎补充*
+
+
+## Maven Plugins
+
+[http://mojo.codehaus.org/](http://mojo.codehaus.org/)
+
+[http://tomcat.apache.org/maven-plugin-2.1/](http://tomcat.apache.org/maven-plugin-2.1/)
+
+[http://maven.apache.org/plugins/index.html](http://maven.apache.org/plugins/index.html)
+
+[http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin](http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin)
+
+[https://docs.jboss.org/jbossas/7/plugins/maven/](https://docs.jboss.org/jbossas/7/plugins/maven/)
+
+[http://mojo.codehaus.org/jboss-maven-plugin/](http://mojo.codehaus.org/jboss-maven-plugin/)
+
+[https://maven.apache.org/plugins/index.html](https://maven.apache.org/plugins/index.html)
+
+[https://code.google.com/p/maven-db-plugin/](https://code.google.com/p/maven-db-plugin/)
+
+
+*欢迎补充*
+
+
+## Java Tutorials
+
+[http://www.mkyong.com/](http://www.mkyong.com/)
+
+[http://www.dzone.com/tutorials/java](http://www.dzone.com/tutorials/java)
+
+[http://viralpatel.net/blogs/](http://viralpatel.net/blogs/)
+
+[http://www.hascode.com/](http://www.hascode.com/)
+
+[http://www.journaldev.com/](http://www.journaldev.com/)
+
+[http://verylearning.com/](http://verylearning.com/)
+
+[http://www.roseindia.net/](http://www.roseindia.net/)
+
+[http://docs.oracle.com/javaee/5/tutorial/doc/docinfo.html](http://docs.oracle.com/javaee/5/tutorial/doc/docinfo.html)
+
+[http://www.mastertheboss.com/index.php](http://www.mastertheboss.com/index.php)
+
+[http://www.vogella.com/](http://www.vogella.com/)
+
+[http://www.solrtutorial.com/index.html](http://www.solrtutorial.com/index.html)
+
+[http://refcardz.dzone.com/](http://refcardz.dzone.com/)
+
+[http://www.springbyexample.org/](http://www.springbyexample.org/)
+
+[http://www.coreservlets.com/](http://www.coreservlets.com/)
+
+[http://www.programcreek.com/](http://www.programcreek.com/)
+
+[http://www.mortardata.com/](http://www.mortardata.com/)
+
+[http://www.pluralsight.com/training/](http://www.pluralsight.com/training/)
+
+[https://tutsplus.com/](https://tutsplus.com/)
+
+[http://www.mossle.com/docs/activiti/](http://www.mossle.com/docs/activiti/)
+
+[http://blog.sae.sina.com.cn/](http://blog.sae.sina.com.cn/)
+
+[http://www.baeldung.com/](http://www.baeldung.com/)
+
+[http://www.javacodegeeks.com/tutorials/java-tutorials/enterprise-java-tutorials/](http://www.javacodegeeks.com/tutorials/java-tutorials/enterprise-java-tutorials/)
+
+[http://www.tutorialspoint.com/](http://www.tutorialspoint.com/)
+
+[http://www.javaworld.com/](http://www.javaworld.com/)
+
+[http://www.codejava.net/](http://www.codejava.net/)
+
+[http://www.javatips.net/](http://www.javatips.net/)
+
+[http://www.codesuggestions.com/java/apache-commons-dbutils-tutorial/](http://www.codesuggestions.com/java/apache-commons-dbutils-tutorial/)
+
+[http://www.javatips.net/blog/2014/03/apache-dbutils-tutorial](http://www.javatips.net/blog/2014/03/apache-dbutils-tutorial)
+
+[http://www.javabeat.net/](http://www.javabeat.net/)
+
+[http://www.concretepage.com/](http://www.concretepage.com/)
+
+[http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-two-crud/](http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-two-crud/)
+
+[http://fruzenshtein.com/spring-jpa-data-hibernate-mysql/](http://fruzenshtein.com/spring-jpa-data-hibernate-mysql/)
+
+[http://howtodoinjava.com/](http://howtodoinjava.com/)
+
+
+*欢迎补充*
+
+
+
 # 与我联系
 
 * QQ:<em>184675420</em>
@@ -37,6 +191,7 @@ github:[https://github.com/v5developer/maven-framework-project](https://github.c
 * Weibo:<em>[http://weibo.com/qq184675420(荧星诉语)](http://weibo.com/qq184675420)</em>
 
 * Twitter:<em>[https://twitter.com/sxyx2008](https://twitter.com/sxyx2008)</em>
+
 
 
 # License
