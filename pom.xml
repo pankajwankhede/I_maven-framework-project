@@ -59,6 +59,7 @@
 	</distributionManagement>
 
 	<modules>
+		<module>aimeizi-tutorials</module>
 		<module>spring3-javaconfig-example</module>
 		<module>spring3-helloworld-example</module>
 		<module>spring3-javaconfig-import-example</module>
@@ -97,7 +98,6 @@
 		<module>spring-jdbc-tutorials</module>
 		<module>spring-data-example</module>
 		<module>spring-ibatis-example</module>
-		<module>javase-tutorials</module>
 	</modules>
 
 	<properties>

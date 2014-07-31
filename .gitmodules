@@ -40,3 +40,6 @@
 [submodule "gradle-learning"]
 	path = gradle-learning
 	url = https://github.com/davenkin/gradle-learning.git
+[submodule "javaee7-samples"]
+	path = javaee7-samples
+	url = https://github.com/javaee-samples/javaee7-samples.git
