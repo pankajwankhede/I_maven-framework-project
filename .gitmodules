@@ -34,3 +34,6 @@
 [submodule "springmvc-hibernate-example"]
 	path = springmvc-hibernate-example
 	url = https://github.com/Fruzenshtein/spr-mvc-hib.git
+[submodule "levelup-java-examples"]
+	path = levelup-java-examples
+	url = https://github.com/leveluplunch/levelup-java-examples.git
