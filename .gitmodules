@@ -37,3 +37,6 @@
 [submodule "levelup-java-examples"]
 	path = levelup-java-examples
 	url = https://github.com/leveluplunch/levelup-java-examples.git
+[submodule "gradle-learning"]
+	path = gradle-learning
+	url = https://github.com/davenkin/gradle-learning.git
