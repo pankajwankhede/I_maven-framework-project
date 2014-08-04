@@ -10,6 +10,6 @@ target
 *.springBeans
 .gradle
 build
+.buildpath
 dependency-reduced-pom.xml
 /src
-
