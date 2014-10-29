@@ -43,3 +43,6 @@
 [submodule "javaee7-samples"]
 	path = javaee7-samples
 	url = https://github.com/javaee-samples/javaee7-samples.git
+[submodule "resteasy-restfull-examples"]
+	path = resteasy-restfull-examples
+	url = https://github.com/sxyx2008/resteasy-restfull-examples.git
