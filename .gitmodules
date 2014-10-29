@@ -46,3 +46,6 @@
 [submodule "resteasy-restfull-examples"]
 	path = resteasy-restfull-examples
 	url = https://github.com/sxyx2008/resteasy-restfull-examples.git
+[submodule "jersey2-restfull-examples"]
+	path = jersey2-restfull-examples
+	url = https://github.com/sxyx2008/jersey2-restfull-examples.git
